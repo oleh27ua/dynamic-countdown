@@ -13,13 +13,13 @@ const port = process.env.PORT || 8080;
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Log all requests
-app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+//   next();
+// });
 
 // Set the views directory
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
 
 // Use routes
 app.use('/', routes);
