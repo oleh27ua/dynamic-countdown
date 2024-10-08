@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/img/calendar.ico">
+  <link rel="stylesheet" href="/css/calendar.css">
+  <script src="/js/calendar.js" defer></script>
+  <title>Calendar</title>
+</head>
+<body>
+  <div class="container">
+    <div class="calendar">
+      <div class="calendar-header">
+        <span class="month-change" id="prev-month">
+          <pre><</pre>
+        </span> <!-- Кнопка попереднього місяця -->
+        <span class="month-picker" id="month-picker">Loading...</span>
+        <span class="month-change" id="next-month">
+          <pre>></pre>
+        </span> <!-- Кнопка наступного місяця -->
+        <div class="year-picker" id="year-picker">
+          <span class="year-change" id="pre-year">
+            <pre><</pre>
+          </span>
+          <span id="year">Loading...</span>
+          <span class="year-change" id="next-year">
+            <pre>></pre>
+          </span>
+        </div>
+      </div>
+      <div class="calendar-body">
+        <div class="calendar-week-days">
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div>Sat</div>
+          <div>Sun</div>
+        </div>
+        <div class="calendar-days">
+        </div>
+      </div>
+      <div class="calendar-footer"></div>
+      <div class="date-time-current">
+        <div class="day-text-current" id="today-button">TODAY</div>
+        <div class="date-time-value">
+          <div class="time-current">00:00:00</div>
+          <div class="date-current">Loading...</div>
+        </div>
+      </div>
+      <div class="month-list"></div>
+    </div>
+  </div>
+</body>
+</html>

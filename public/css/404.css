@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+
+:root {
+  --bg: #121317;
+  --blue: #19aaf3;
+  --heading: #e7ebf2;
+  --white: #fff
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  font-family: 'Montserrat', sans-serif;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+}
+
+h1 {
+  color: var(--heading);
+  font-size: 12.5rem;
+  letter-spacing: 0.10em;
+  margin: 0.025em 0;
+  white-space: nowrap;
+}
+
+h1 > span {
+  animation: spooky 2s alternate infinite linear;
+  color: var(--blue);
+  display: inline-block;
+}
+
+h2 {
+  color: var(--heading);
+  margin-bottom: 0.40em;
+}
+
+p {
+  color: #ccc;
+  margin-top: 0;
+}
+
+#text-button {
+  cursor: pointer;
+  color: var(--blue);
+  padding: 5px 10px;
+  border-radius: 10px;
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+}
+
+#text-button:hover {
+  background-color: var(--color-hover);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+@keyframes spooky {
+  from {
+    transform: translateY(0.15em) scaleY(0.95);
+  }
+  to {
+    transform: translateY(-0.15em);
+  }
+}
+
+@media (max-width: 30rem) {
+  h1 {
+    font-size: 8.5rem;
+  }
+}

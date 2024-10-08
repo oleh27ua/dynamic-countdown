@@ -1,0 +1,553 @@
+:root {
+    --dark-text: #f8fbff;
+    --light-body: #f3f8fe;
+    --light-main: #fdfdfd;
+    --light-second: #c3c2c8;
+    --light-hover: #f0f0f0;
+    --light-text: #151426;
+    --light-btn: #19aaf3;
+    --blue: #0000ff;
+    --white: #fff;
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --font-family: consolas;
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 3px;
+    }
+    ::-webkit-scrollbar-button {
+        background-color: #3a3a3a;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: #646464;
+    }
+    ::-webkit-scrollbar-track-piece {
+        background-color: #000;
+    }
+    ::-webkit-scrollbar-thumb {
+        height: 50px;
+        background-color: #666;
+        border-radius: 70px;
+    }
+    ::-webkit-scrollbar-corner {
+        background-color: #646464;
+    }
+    ::-webkit-resizer {
+        background-color: #666;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    place-items: center;
+    font-family: var(--font-family);
+    background: #121317;
+    overflow: auto;
+}
+
+.container {
+    width: max-content;
+    height: max-content;
+    position: relative;
+    display: flex;
+    padding: 2% 0px 0px 0px;
+    justify-content: center;
+    top: 5%;
+    right: 0%;
+    width: 100%;
+    height: 70%;
+}
+
+.calendar {
+    height: 610px;
+    width: max-content;
+    background-color: #21242b;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 30px 50px 30px 50px;
+    box-shadow: var(--shadow);
+}
+
+.calendar-header {
+    background: #19aaf3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: var(--white);
+    padding: 10px;
+}
+
+.calendar-body {
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: 600;
+    cursor: pointer;
+    color: #bebebe;
+}
+
+.calendar-week-days div {
+    display: grid;
+    place-items: center;
+    color: var(--bg-second);
+    height: 50px;
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+}
+
+.calendar-week-days div:hover {
+    color: var(--white);
+    transform: scale(1.2);
+}
+
+.calendar-days {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 2px;
+    color: var(--white);
+    justify-items: center;
+}
+
+.calendar-days div {
+    width: 37px;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+    animation: fadeIn 1s ease forwards;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 20%;
+}
+
+.month-picker {
+    width: 100px; /* Фіксована ширина */
+    text-align: center; /* Вирівнюємо текст по центру */
+    padding: 5px 10px;
+    border-radius: 10px;
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+}
+
+.month-picker:hover {
+    cursor: pointer;
+    background-color: var(--color-hover);
+    color: var(--white);
+    transform: scale(1.2);
+}
+
+.month-change,
+.year-change {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0px 10px;
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+}
+
+.month-change:hover,
+.year-change:hover {
+    background-color: var(--light-btn);
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.12);
+    cursor: pointer;
+}
+
+.year-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+}
+
+.year-change:hover pre {
+    color: var(--bg-body);
+}
+
+.calendar-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* #year {
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+  }
+  #year:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+  } */
+
+.calendar-days div span {
+    position: absolute;
+}
+
+.calendar-days div:hover {
+    background-color: rgb(25, 170, 243, 0.2719);
+    border-radius: 20%;
+    color: var(--dark-text);
+}
+
+.calendar-days div.current-date {
+    color: var(--dark-text);
+    background-color: var(--light-btn);
+    border-radius: 20%;
+}
+
+.month-list {
+    position: relative;
+    left: 0;
+    top: -80px;
+    background-color: #ebebeb;
+    color: var(--light-text);
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+    border-radius: 20px;
+}
+
+.month-list > div {
+    display: grid;
+    place-content: center;
+    margin: 5px 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.month-list > div > div {
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.month-list > div > div:hover {
+    background-color: var(--light-btn);
+    color: var(--dark-text);
+    transform: scale(0.9);
+    transition: all 0.2s ease-in-out;
+}
+
+.month-list.show {
+    visibility: visible;
+    pointer-events: visible;
+    transition: 0.6s ease-in-out;
+    animation: to-left 0.71s forwards;
+}
+
+.month-list.hideonce {
+    visibility: hidden;
+}
+
+.month-list.hide {
+    animation: to-right 1s forwards;
+    visibility: none;
+    pointer-events: none;
+}
+
+.date-time-current {
+    width: max-content;
+    height: max-content;
+    font-family: Dubai Light, Century Gothic;
+    position: relative;
+    display: inline;
+    top: 50px;
+    justify-content: center;
+    padding-top: 0%;
+    color: var(--white);
+}
+
+.day-text-current {
+    font-family: Microsoft JhengHei UI;
+    font-size: 1.4rem;
+    padding-right: 5%;
+    border-right: 3px solid #19aaf3;
+    position: absolute;
+    left: 1rem;
+}
+
+#today-button {
+    color: #bebebe;
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+}
+
+#today-button:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    color: var(--white);
+}
+
+.date-time-value {
+    display: block;
+    height: max-content;
+    width: max-content;
+    position: relative;
+    left: 50%;
+    top: -18px;
+    text-align: center;
+}
+
+.time-current {
+    font-size: 1.5rem;
+}
+
+.time-current.hideTime {
+    animation: hidetime 1.5s forwards;
+}
+
+.day-text-current.hidetime {
+    animation: hidetime 1.5s forwards;
+}
+
+.date-current.hideTime {
+    animation: hidetime 1.5s forwards;
+}
+
+.day-text-current.showtime {
+    animation: showtime 1s forwards;
+}
+
+.time-current.showtime {
+    animation: showtime 1s forwards;
+}
+
+.date-current.showtime {
+    animation: showtime 1s forwards;
+}
+
+@keyframes to-left {
+    0% {
+        transform: translatex(230%);
+        opacity: 1;
+    }
+    100% {
+        transform: translatex(0);
+        opacity: 1;
+    }
+}
+
+@keyframes to-right {
+    10% {
+        transform: translatex(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translatex(-150%);
+        opacity: 1;
+    }
+}
+
+@keyframes showtime {
+    0% {
+        transform: translatex(250%);
+        opacity: 1;
+    }
+    100% {
+        transform: translatex(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes hidetime {
+    0% {
+        transform: translatex(0%);
+        opacity: 1;
+    }
+    100% {
+        transform: translatex(-370%);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 375px) {
+    .month-list > div {
+        margin: 5px 0px;
+    }
+}
+
+.prev-month-day,
+.next-month-day {
+    color: rgba(255, 255, 255, 0.4); /* Напівпрозорий текст */
+}
+
+.current-date {
+    font-weight: bold;
+    background-color: #19aaf3;
+    color: white;
+    border-radius: 50%;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* Початковий стан: прозорий */
+        transform: translateY(-20px); /* Зсув вгору */
+    }
+    100% {
+        opacity: 1; /* Кінцевий стан: видимий */
+        transform: translateY(0); /* Виходить на своє місце */
+    }
+}
+
+.time-current,
+.date-current {
+    animation: fadeIn 0.5s ease forwards; /* Застосування анімації */
+    opacity: 0; /* Початкове значення, щоб було прозоро */
+    transform: translateY(-20px); /* Зсув вгору */
+}
+
+.time-current.show,
+.date-current.show {
+    opacity: 1; /* Змінюємо на видимий */
+    transform: translateY(0); /* Скидаємо зсув */
+}
+
+.current-date-time {
+    position: relative;
+}
+
+/* Медіа-запити для адаптивності */
+
+/* Для екранів шириною до 768px (планшети і великі телефони) */
+@media screen and (max-width: 768px) {
+    .calendar {
+        padding: 20px 30px 20px 30px;
+    }
+
+    .calendar-header {
+        font-size: 0.9em;
+    }
+
+    .calendar-week-days div {
+        font-size: 0.9em;
+    }
+
+    .calendar-days div {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9em;
+    }
+
+    .month-picker {
+        width: 80px;
+        font-size: 0.9em;
+    }
+
+    .year-picker {
+        font-size: 0.9em;
+    }
+
+    .day-text-current {
+        font-size: 1.2em;
+    }
+
+    .date-time-value {
+        font-size: 0.9em;
+    }
+}
+
+/* Для екранів шириною до 480px (мобільні телефони) */
+@media screen and (max-width: 480px) {
+    .calendar {
+        padding: 15px 20px 15px 20px;
+    }
+
+    .calendar-header {
+        font-size: 0.8em;
+    }
+
+    .calendar-week-days div {
+        font-size: 0.8em;
+    }
+
+    .calendar-days div {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8em;
+    }
+
+    .month-picker {
+        width: 70px;
+        font-size: 0.8em;
+    }
+
+    .year-picker {
+        font-size: 0.8em;
+    }
+
+    .day-text-current {
+        font-size: 1em;
+    }
+
+    .date-time-value {
+        font-size: 0.8em;
+    }
+
+    .month-list > div > div {
+        font-size: 0.8em;
+    }
+}
+
+/* Для екранів менше 360px */
+@media screen and (max-width: 360px) {
+    .calendar {
+        padding: 10px 15px 10px 15px;
+    }
+
+    .calendar-header {
+        font-size: 0.7em;
+    }
+
+    .calendar-week-days div {
+        font-size: 0.7em;
+    }
+
+    .calendar-days div {
+        width: 20px;
+        height: 20px;
+        font-size: 0.7em;
+    }
+
+    .month-picker {
+        width: 60px;
+        font-size: 0.7em;
+    }
+
+    .year-picker {
+        font-size: 0.7em;
+    }
+
+    .day-text-current {
+        font-size: 0.9em;
+    }
+
+    .date-time-value {
+        font-size: 0.7em;
+    }
+
+    .month-list > div > div {
+        font-size: 0.7em;
+    }
+}

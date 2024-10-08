@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+    ::-webkit-scrollbar { width: 8px; height: 3px; }
+    ::-webkit-scrollbar-button {  background-color: #3a3a3a; }
+    ::-webkit-scrollbar-track {  background-color: #646464; }
+    ::-webkit-scrollbar-track-piece { background-color: #000; }
+    ::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 70px; }
+    ::-webkit-scrollbar-corner { background-color: #646464; }
+    ::-webkit-resizer { background-color: #666; }
+
+    /* --color-hover: #1088c92e; */
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 80px 15%;
+    background: #121317;
+}
+
+h1 {
+    /* color: #19aaf3; */
+    color: var(--white);
+    font-size: 5vw;
+    margin-bottom: -1.5vw;
+}
+
+p {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 3vw;
+    font-weight: 700;
+    margin-bottom: 4vw;
+}
+
+.container {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); */
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    gap: 2rem;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.container .bx {
+    border-radius: 10px;
+    height: 14.25rem;
+    background: #21242b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 10px solid #19aaf3;
+}
+
+.container .bx .caption {
+    color: #b2b5ba;
+}
+
+.container .bx .counter {
+    color: #fff;
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+#frequency, #day-date, #time {
+    cursor: pointer;
+    color: #19aaf3;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+}
+
+#frequency:hover, #day-date:hover, #time:hover {
+    background-color: var(--color-hover);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0);
+    transition: background-color 0.3s ease;
+}
+
+.modal.show {
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #21242b;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    color: #fff;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type="date"], input[type="time"] {
+    background-color: #3a3a3a;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+button {
+    background-color: #19aaf3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1089c9;
+}
