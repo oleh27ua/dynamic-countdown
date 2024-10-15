@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 });
 
 // Set the views directory
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './views'));
 
 // Use routes
 app.use('/', routes);
